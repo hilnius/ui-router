@@ -128,7 +128,7 @@ function $StateRefDirective($state, $timeout) {
 
       var update = function(val) {
         if (val) def.params = angular.copy(val);
-        def.href = $state.href(ref.state, def.params, def.options);
+        def.href = window.location.pathname + $state.href(ref.state, def.params, def.options);
 
         if (active) active.$$addStateInfo(ref.state, def.params);
         if (def.href !== null) attrs.$set(type.attr, def.href);
@@ -176,7 +176,7 @@ function $StateRefDynamicDirective($state, $timeout) {
 
       function runStateRefLink (group) {
         def.state = group[0]; def.params = group[1]; def.options = group[2];
-        def.href = $state.href(def.state, def.params, def.options);
+        def.href = window.location.pathname + $state.href(def.state, def.params, def.options);
 
         if (active) active.$$addStateInfo(ref.state, def.params);
         if (def.href) attrs.$set(type.attr, def.href);
