@@ -141,9 +141,9 @@ module.exports = function (grunt) {
   grunt.registerTask('widedocs', 'Convert to bootstrap container-fluid', function () {
     promising(this,
       system(
-      'sed -i.bak ' + 
-      '-e \'s/class="row"/class="row-fluid"/\' ' + 
-      '-e \'s/icon-cog"><\\/i>/icon-cog"><\\/i>Provider/\' ' + 
+      'sed -i.bak ' +
+      '-e \'s/class="row"/class="row-fluid"/\' ' +
+      '-e \'s/icon-cog"><\\/i>/icon-cog"><\\/i>Provider/\' ' +
       '-e \'s/role="main" class="container"/role="main" class="container-fluid"/\' site/index.html')
     );
   });
@@ -202,7 +202,7 @@ module.exports = function (grunt) {
 
     var version = grunt.config('pkg.version'), releasedir = grunt.config('builddir');
     promising(this,
-      system('git add \'' + releasedir + '\'').then(function () {
+      system('git add -f \'' + releasedir + '\'').then(function () {
         return system('git commit -m \'release ' + version + '\'');
       }).then(function () {
         return system('git tag \'' + version + '\'');
